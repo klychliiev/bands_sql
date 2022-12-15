@@ -12,7 +12,6 @@ c.execute(""" CREATE TABLE IF NOT EXISTS bands(
     residence text NOT NULL
 )
 """)
-# conn.commit()
 
 
 c.execute("INSERT INTO bands VALUES (1,'Pusca',3,'Ephemere','Lviv')")
@@ -20,13 +19,11 @@ c.execute("INSERT INTO bands VALUES (2, 'White Ward',5,'False Light','Odesa')")
 c.execute("INSERT INTO bands VALUES (3, 'Drudkh',4,'A few lines in Archaic Ukrainian', 'Kharkiv')")
 c.execute("INSERT INTO bands VALUES (4, 'КАТ',3,'Поклик','Kharkiv')")
 c.execute("INSERT INTO bands VALUES (5, 'Mauser',3,'Self-Titled','Lviv')")
-# conn.commit()
 
 c.execute("SELECT * from bands WHERE num_members=3 ")
 print(c.fetchall())
 
 c.execute("UPDATE bands SET num_members=4 WHERE name='Mauser'")
-# conn.commit()
 
 c.execute("SELECT * FROM bands")
 print(c.fetchall())
@@ -38,11 +35,11 @@ new_data = [
 ]
 
 c.executemany("INSERT INTO bands VALUES(?,?,?,?,?);", new_data)
-# conn.commit()
 
+print()
 c.execute("SELECT * FROM bands")
 print(c.fetchall())
 
-# conn.commit()
+conn.commit()
 
 conn.close()
